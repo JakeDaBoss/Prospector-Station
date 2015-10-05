@@ -48,6 +48,7 @@
 	var/list/unarmed_attacks = null          // For empty hand harm-intent attack
 	var/brute_mod = 1                        // Physical damage multiplier.
 	var/burn_mod = 1                         // Burn damage multiplier.
+	var/oxy_mod = 1							 // Oxygen damage multiplier?
 	var/vision_flags = SEE_SELF              // Same flags as glasses.
 
 	// Death vars.

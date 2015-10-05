@@ -250,17 +250,16 @@
 	deform = 'icons/mob/human_races/r_def_Aviskree.dmi'
 	language = "Aviachirp"
 	tail = "aviskreetail"
-	blurb = "A tall avian species, Aviskree originally hail from S'ranjir, The Tajara moon, known to them as Avis, \
- 	hidden deep below the surface of the planet, and discovered by a mining team. <br/> <br/> Being trapped below the surface of a mostly \
- 	inhospitable planet, technology was very limited for the species, resulting in a tribal society. \
+	blurb = "A tall avian species, Aviskree originally hail from Avis, of the Aindege system, \
+ 	a heavily forested planet of avian species, <br/> <br/> The Aviskree live in a tradition \
+ 	heavy society with a tech level resembling that of early 2000s earth with advances in electricity. \
  	They are still acclimating to human society, and their native language is Aviachirp, a language made mostly of high pitched chirps."
 	unarmed_types = list(/datum/unarmed_attack/claws, /datum/unarmed_attack/bite/strong)
 	primitive = /mob/living/carbon/monkey/aviskree
 	wingicon = 1
-	sizechange = 1
 	falldmg = 1
-	darksight = 10
-	brute_mod = 1.1
+	brute_mod = 1.25
+	oxy_mod = 1.5
 
 	flags = CAN_JOIN | IS_WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
