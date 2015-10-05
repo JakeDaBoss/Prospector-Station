@@ -50,6 +50,22 @@ var/list/mechtoys = list(
 	layer = 4
 	explosion_resistance = 5
 	var/flapcut = 0
+	var/list/mobs_can_pass = list(
+		/mob/living/carbon/slime,
+		/mob/living/simple_animal/mouse,
+		/mob/living/silicon/robot/drone
+		)
+
+/obj/structure/plasticflaps/CanPass(atom/A, turf/T)
+	if(istype(A) && A.checkpass(PASSGLASS))
+		return prob(60)
+
+	var/obj/structure/bed/B = A
+	if (istype(A, /obj/structure/bed) && B.buckled_mob)//if it's a bed/chair and someone is buckled, it will not pass
+		return 0
+
+	if(istype(A, /obj/vehicle))	//no vehicles
+		return 0
 
 /obj/structure/plasticflaps/CanPass(atom/A, turf/T)
 	if (flapcut == 1)
@@ -80,38 +96,17 @@ var/list/mechtoys = list(
 /obj/structure/plasticflaps/ex_act(severity)
 	switch(severity)
 		if (1)
-			del(src)
+			qdel(src)
 		if (2)
 			if (prob(50))
-				del(src)
+				qdel(src)
 		if (3)
 			if (prob(5))
-				del(src)
-
-/obj/structure/plasticflaps/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/wirecutters))
-		if(flapcut == 1)
-			user << "The [src] is cut already."
-		else
-			flapcut = 1
-			user << "You cut a hole in the [src]."
-			icon_state = "plasticflaps_cut"
-			playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
-	if(istype(I, /obj/item/stack/sheet/mineral/plastic))
-		var/obj/item/stack/sheet/mineral/plastic/P = I
-		if(flapcut == 0)
-			user << "The [src] is in no need of repair."
-		else
-			if(P.use(5))
-				flapcut = 0
-				user << "You repair the hole in the [src] with the [I.name]."
-				icon_state = "plasticflaps"
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+				qdel(src)
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps."
-
 
 	New() //set the turf below the flaps to block air
 		var/turf/T = get_turf(loc)
@@ -119,12 +114,13 @@ var/list/mechtoys = list(
 			T.blocks_air = 1
 		..()
 
-	Del() //lazy hack to set the turf to allow air to pass if it's a simulated floor
+	Destroy() //lazy hack to set the turf to allow air to pass if it's a simulated floor
 		var/turf/T = get_turf(loc)
 		if(T)
 			if(istype(T, /turf/simulated/floor))
 				T.blocks_air = 0
 		..()
+
 /*
 /obj/effect/marker/supplymarker
 	icon_state = "X"
