@@ -75,18 +75,18 @@
 				can_grab = 0
 		if(can_grab)
 			src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
-			if(istype(victim, /mob/living/carbon))
-				var/mob/living/carbon/C = victim
+			if(istype(victim, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = victim
-				if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
-					if(prob(20))
-						C.take_blood(src,10)
-						victim << "<span class='warning'>A tendril punctures your suit with a sharp prick!</span>"
+				if(H)
+					if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
+						if(prob(20))
+							H.take_blood(src,10)
+							victim << "<span class='warning'>A tendril punctures your suit with a sharp prick!</span>"
+						else
+							return
 					else
-						return
-				else
-					victim << "<span class='warning'>You feel a sharp prick!</span>" //suck it, mcfluff
-					C.take_blood(src,10)
+						victim << "<span class='warning'>You feel a sharp prick!</span>" //suck it, mcfluff
+						H.take_blood(src,10)
 
 			victim.loc = src.loc
 			return

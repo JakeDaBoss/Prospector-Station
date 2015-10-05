@@ -125,7 +125,6 @@ var/list/ghostteleportlocs = list()
 	luminosity = 1
 
 
-
 //These are shuttle areas, they must contain two areas in a subgroup if you want to move a shuttle from one
 //place to another. Look at escape shuttle for example.
 //All shuttles show now be under shuttle since we have smooth-wall code.
@@ -1473,16 +1472,20 @@ var/list/ghostteleportlocs = list()
 	icon_state = "brig"
 
 /area/security/perma
-	name = "PermaBrig"
-	icon_state = "brig"
+	name = "Perma Brig"
+	icon_state = "Pbrig"
+
+/area/security/permaentrance
+	name = "Perma Brig Entrance"
+	icon_state = "Pbrigentrance"
 
 /area/security/permaobservation
 	name = "Perma Brig Observation"
-	icon_state = "brig"
+	icon_state = "Pbrigobservation"
 
 /area/security/permaisolation
 	name = "Perma Brig Isolation"
-	icon_state = "brig"
+	icon_state = "Pbrigisolation"
 
 /area/security/prison
 	name = "Prison Wing"

@@ -131,6 +131,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(!istype(L,/list)) src << "Not a List."
 
 	var/list/locked = list("vars", "key", "ckey", "client", "firemut", "ishulk", "telekinesis", "xray", "virus", "viruses", "cuffed", "ka", "last_eaten", "urine", "poo", "icon", "icon_state")
+	var/list/GMlocked = list("holder")
 	var/list/names = sortList(L)
 
 	var/variable = input("Which var?","Var") as null|anything in names + "(ADD VAR)"
@@ -148,6 +149,9 @@ var/list/forbidden_varedit_object_types = list(
 
 	if(variable in locked)
 		if(!check_rights(R_DEBUG))	return
+
+	if(variable in GMlocked)
+		if(!check_rights(R_PERMISSIONS)) return
 
 	if(isnull(variable))
 		usr << "Unable to determine variable type."
@@ -276,6 +280,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(!check_rights(/*R_VAREDIT*/R_ADMIN))	return
 
 	var/list/locked = list("vars", "key", "ckey", "client", "firemut", "ishulk", "telekinesis", "xray", "virus", "cuffed", "ka", "last_eaten", "icon", "icon_state")
+	var/list/GMlocked= list("holder")
 
 	for(var/p in forbidden_varedit_object_types)
 		if( istype(O,p) )
@@ -291,8 +296,11 @@ var/list/forbidden_varedit_object_types = list(
 			src << "A variable with this name ([param_var_name]) doesn't exist in this atom ([O])"
 			return
 
-		if(param_var_name == "holder" || (param_var_name in locked))
+		if(param_var_name in locked)
 			if(!check_rights(R_DEBUG))	return
+
+		if(param_var_name in GMlocked)
+			if(!check_rights(R_PERMISSIONS)) return
 
 		variable = param_var_name
 
@@ -349,8 +357,11 @@ var/list/forbidden_varedit_object_types = list(
 		if(!variable)	return
 		var_value = O.vars[variable]
 
-		if(variable == "holder" || (variable in locked))
+		if(variable in locked)
 			if(!check_rights(R_DEBUG))	return
+
+		if(variable in GMlocked)
+			if(!check_rights(R_PERMISSIONS)) return
 
 	if(!autodetect_class)
 
