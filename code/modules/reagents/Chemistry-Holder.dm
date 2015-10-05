@@ -279,6 +279,7 @@ datum
 				update_total()
 
 			handle_reactions()
+				if(!my_atom) return
 				if(my_atom.flags & NOREACT) return //Yup, no reactions here. No siree.
 
 				var/reaction_occured = 0
@@ -535,7 +536,8 @@ datum
 					//	world << "Container data: [D] = [R.data[D]]"
 					//debug
 					update_total()
-					my_atom.on_reagent_change()
+					if(my_atom)
+						my_atom.on_reagent_change()
 					if(!safety)
 						handle_reactions()
 					return 0
