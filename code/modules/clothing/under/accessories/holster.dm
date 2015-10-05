@@ -4,6 +4,7 @@
 	icon_state = "holster"
 	item_color = "holster"
 	var/can_hold = list()
+	var/cannot_hold = list()
 	var/storage_slots = 1
 	slot = "utility"
 	var/holster_allow = list()
@@ -13,6 +14,8 @@
 
 //subtypes can override this to specify what can be holstered
 /obj/item/clothing/accessory/holster/proc/can_holster(obj/item/weapon/gun/W)
+	if(istype(W,cannot_hold))
+		return 1
 	if(!istype(W,holster_allow))
 		return 0
 	else
@@ -138,7 +141,20 @@
 		"/obj/item/weapon/gun/projectile/colt/detective",
 		"/obj/item/weapon/gun/energy/taser",
 		"/obj/item/weapon/gun/energy/stunrevolver",
-		"/obj/item/weapon/gun/energy")
+		"/obj/item/weapon/gun/energy",
+		"/obj/item/weapon/gun/energy/gun")
+	cannot_hold = list("/obj/item/weapon/gun/projectile/shotgun/pump",
+		"/obj/item/weapon/gun/projectile/shotgun/pump/combat",
+		"/obj/item/weapon/gun/projectile/shotgun/doublebarrel",
+		"/obj/item/weapon/gun/projectile/heavysniper",
+		"/obj/item/weapon/gun/projectile/automatic/c20r",
+		"/obj/item/weapon/gun/energy/laser",
+		"/obj/item/weapon/gun/energy/captain",
+		"/obj/item/weapon/gun/energy/lasercannon",
+		"/obj/item/weapon/gun/energy/sniperrifle",
+		"/obj/item/weapon/gun/energy/gun/nuclear",
+		"/obj/item/weapon/gun/energy/pulse_rifle"
+		)
 
 /obj/item/clothing/accessory/holster/waist
 	name = "waist holster"
@@ -158,6 +174,18 @@
 		"/obj/item/weapon/gun/energy/taser",
 		"/obj/item/weapon/gun/energy/stunrevolver",
 		"/obj/item/weapon/gun/energy")
+	cannot_hold = list("/obj/item/weapon/gun/projectile/shotgun/pump",
+		"/obj/item/weapon/gun/projectile/shotgun/pump/combat",
+		"/obj/item/weapon/gun/projectile/shotgun/doublebarrel",
+		"/obj/item/weapon/gun/projectile/heavysniper",
+		"/obj/item/weapon/gun/projectile/automatic/c20r",
+		"/obj/item/weapon/gun/energy/laser",
+		"/obj/item/weapon/gun/energy/captain",
+		"/obj/item/weapon/gun/energy/lasercannon",
+		"/obj/item/weapon/gun/energy/sniperrifle",
+		"/obj/item/weapon/gun/energy/gun/nuclear",
+		"/obj/item/weapon/gun/energy/pulse_rifle"
+		)
 
 /obj/item/clothing/accessory/holster/hip
 	name = "hip holster"
@@ -177,3 +205,15 @@
 		"/obj/item/weapon/gun/energy/taser",
 		"/obj/item/weapon/gun/energy/stunrevolver",
 		"/obj/item/weapon/gun/energy")
+	cannot_hold = list("/obj/item/weapon/gun/projectile/shotgun/pump",
+		"/obj/item/weapon/gun/projectile/shotgun/pump/combat",
+		"/obj/item/weapon/gun/projectile/shotgun/doublebarrel",
+		"/obj/item/weapon/gun/projectile/heavysniper",
+		"/obj/item/weapon/gun/projectile/automatic/c20r",
+		"/obj/item/weapon/gun/energy/laser",
+		"/obj/item/weapon/gun/energy/captain",
+		"/obj/item/weapon/gun/energy/lasercannon",
+		"/obj/item/weapon/gun/energy/sniperrifle",
+		"/obj/item/weapon/gun/energy/gun/nuclear",
+		"/obj/item/weapon/gun/energy/pulse_rifle"
+		)
