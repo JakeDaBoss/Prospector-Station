@@ -275,6 +275,12 @@
 #define FULL_BODY		8191
 #define NECK			40
 
+//intent flags, why wasn't this done the first time?
+#define I_HELP		"help"
+#define I_DISARM	"disarm"
+#define I_GRAB		"grab"
+#define I_HURT		"harm"
+
 // Bitflags for the percentual amount of protection a piece of clothing which covers the body part offers.
 // Used with human/proc/get_heat_protection() and human/proc/get_cold_protection().
 // The values here should add up to 1, e.g., the head has 30% protection.
