@@ -116,6 +116,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		s["ai"] = config.allow_ai
 		s["host"] = host ? host : null
 		s["stationtime"] = worldtime2text()
+		s["roundduration"] = round_duration()
 
 		if(input["status"] == "2")
 			var/list/players = list()
