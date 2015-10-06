@@ -137,7 +137,6 @@
 	primitive = /mob/living/carbon/alien/diona
 	slowdown = 7
 	rarity_value = 3
-	gluttonous = 1
 	hud_type = /datum/hud_data/diona
 	siemens_coefficient = 0.3
 
@@ -229,6 +228,7 @@
 	heat_level_3 = 2000
 
 	synth_temp_gain = 10 //this should cause IPCs to stabilize at ~80 C in a 20 C environment.
+	death_message = "seizes up and powers down, their monitor blank..."
 
 	flags = CAN_JOIN | IS_WHITELISTED | NO_BREATHE | NO_SCAN | NO_BLOOD | NO_PAIN | IS_SYNTHETIC
 
@@ -250,46 +250,21 @@
 	deform = 'icons/mob/human_races/r_def_Aviskree.dmi'
 	language = "Aviachirp"
 	tail = "aviskreetail"
-	blurb = "A tall avian species, Aviskree originally hail from S'ranjir, The Tajara moon, known to them as Avis, \
- 	hidden deep below the surface of the planet, and discovered by a mining team. <br/> <br/> Being trapped below the surface of a mostly \
- 	inhospitable planet, technology was very limited for the species, resulting in a tribal society. \
+	blurb = "A tall avian species, Aviskree originally hail from Avis, of the Aindege system, \
+ 	a heavily forested planet of avian species, <br/> <br/> The Aviskree live in a tradition \
+ 	heavy society with a tech level resembling that of early 2000s earth with advances in electricity. \
  	They are still acclimating to human society, and their native language is Aviachirp, a language made mostly of high pitched chirps."
 	unarmed_types = list(/datum/unarmed_attack/claws, /datum/unarmed_attack/bite/strong)
 	primitive = /mob/living/carbon/monkey/aviskree
 	wingicon = 1
-	sizechange = 1
 	falldmg = 1
-	darksight = 10
-	brute_mod = 1.1
+	brute_mod = 1.25
+	oxy_mod = 1.5
 
-	flags = CAN_JOIN | IS_WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
+
+	flags = IS_RESTRICTED | IS_WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	reagent_tag = IS_AVISKREE
-
-/datum/species/avisaran
-	name = "Avisaran"
-	icobase = 'icons/mob/human_races/r_Avisaran.dmi'
-	deform = 'icons/mob/human_races/r_def_Avisaran.dmi'
-	language = "Siik'tajr"
-	tail = "Avisaran"
-	unarmed_types = list(/datum/unarmed_attack/claws_J)
-	darksight = 25
-	dhts = 1
-	wingicon = 1
-	sizechange = 1
-	falldmg = 1
-
-	cold_level_1 = 200 //Default 260
-	cold_level_2 = 140 //Default 200
-	cold_level_3 = 80 //Default 120
-
-	heat_level_1 = 330 //Default 360
-	heat_level_2 = 380 //Default 400
-	heat_level_3 = 800 //Default 1000
-
-	flags = HAS_LIPS | HAS_UNDERWEAR | IS_STRONG | IS_RESTRICTED
-
-	flesh_color = "#BCBCBC"
 
 /datum/species/kidan
 	name = "Kidan"
