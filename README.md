@@ -1,5 +1,7 @@
 # Unbound Travels
 
+[![Join the chat at https://gitter.im/JakeDaBoss/Prospector-Station](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JakeDaBoss/Prospector-Station?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![travis](https://travis-ci.org/jamiedigweed/NSS-Phoenix.svg)
 
 [Website](http://www.unbound-travels.com/) - [Code](https://github.com/jamiedigweed/NSS-Phoenix)
