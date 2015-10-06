@@ -219,6 +219,8 @@
 	return ..()
 
 /mob/living/carbon/human/adjustOxyLoss(var/amount)
+	if(species && species.oxy_mod)
+		amount = amount*species.oxy_mod
 	if(species.flags & NO_BREATHE)
 		oxyloss = 0
 	else
