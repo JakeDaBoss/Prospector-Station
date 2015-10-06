@@ -10,7 +10,7 @@
 	maxhealth = 25
 	fire_dam_coeff = 0.7
 	brute_dam_coeff = 0.5
-	req_one_access = list(access_security, access_forensics_lockers, access_blueshield)
+	req_one_access = list(access_security, access_forensics_lockers, access_blueshield, access_robotics)
 
 	var/mob/target
 	var/oldtarget_name
