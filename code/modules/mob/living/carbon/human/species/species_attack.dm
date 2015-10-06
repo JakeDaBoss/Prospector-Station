@@ -70,15 +70,6 @@
 	//Todo, maybe have a chance of causing an electrical shock?
 	return
 
-/datum/unarmed_attack/claws_J
-	attack_verb = list("scratch", "claw")
-	attack_sound = 'sound/weapons/slice.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-	damage = 6
-	sharp = 1
-	edge = 1
-	shredding = 1
-
 /datum/unarmed_attack/alien
 	attack_verb = list("slash", "maul")
 	attack_sound = 'sound/weapons/slice.ogg'
