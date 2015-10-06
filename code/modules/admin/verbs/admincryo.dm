@@ -103,6 +103,11 @@
 			if(usr.client.holder)
 				var/job = M.mind.assigned_role
 
+				var/obj/structure/closet/crate/secure/K = new /obj/structure/closet/crate/secure/(M.loc)
+				K.req_access += get_access(job)
+				K.name = (M.real_name + " - " + job + " - SSD Crate")
+				K.health = 1000000
+
 				for(var/obj/item/weapon/card/id/Z in M)
 					del(Z)
 				for(var/obj/item/device/pda/Y in M)
@@ -110,12 +115,9 @@
 				for(var/obj/item/clothing/under/X in M)
 					del(X)
 				for(var/obj/item/W in M)
-					M.drop_from_inventory(W)
+					M.drop_from_inventory(W in K)
 
-				var/obj/structure/closet/crate/secure/K = new /obj/structure/closet/crate/secure/(M.loc)
-				K.req_access += get_access(job)
-				K.name = (M.real_name + " - " + job + " - SSD Crate")
-				K.health = 1000000
+
 				for(var/datum/objective/O in all_objectives)
 				// We don't want revs to get objectives that aren't for heads of staff. Letting
 				// them win or lose based on cryo is silly so we remove the objective.
