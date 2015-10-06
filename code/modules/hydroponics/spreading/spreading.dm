@@ -51,7 +51,7 @@
 	layer = 3
 	pass_flags = PASSTABLE
 	mouse_opacity = 2
-
+	reagents = new/datum/reagents(500)
 	var/health = 10
 	var/max_health = 100
 	var/growth_threshold = 0

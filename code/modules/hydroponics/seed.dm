@@ -156,7 +156,8 @@
 		target << "<span class='danger'>You are stung by \the [fruit]!</span>"
 		for(var/rid in chems)
 			var/injecting = min(5,max(1,get_trait(TRAIT_POTENCY)/5))
-			target.reagents.add_reagent(rid,injecting)
+			if(target.reagents)
+				target.reagents.add_reagent(rid,injecting)
 
 //Splatter a turf.
 /datum/seed/proc/splatter(var/turf/T,var/obj/item/thrown)
@@ -173,6 +174,8 @@
 
 	if(chems)
 		for(var/mob/living/M in T.contents)
+			if(!M)
+				continue
 			if(!M.reagents)
 				continue
 			for(var/chem in chems)

@@ -231,9 +231,40 @@
 
 	Bumped(var/atom/movable/M)
 		if(connected && target && istype(src, /obj/multiz/stairs) && locate(/obj/multiz/stairs) in M.loc)
+			var/mob/living/carbon/C = null
+			var/obj/P = null //for pulled objects
+			var/mob/PM = null //for pulled mobs
+			var/PO = 0 //pulling obj/mob check
+			var/obj/item/weapon/grab/grab = null //for grabbed mobs
+			var/GM = 0 // grabed mob check
+			if(iscarbon(M))
+				C = M
+				if(C && C.pulling)
+					if(istype(C.pulling, /obj)) //checks for objects being pulled
+						PO = 1
+						P = C.pulling
+					if(istype(C.pulling, /mob)) // checks for mobs being pulled
+						PO = 1
+						PM = C.pulling
+				if(C)
+					for(var/obj/item/weapon/W in C.contents)
+						if(istype(W,/obj/item/weapon/grab))
+							GM = 1
+							grab = W
 			var/obj/multiz/stairs/Con = locate(/obj/multiz/stairs) in M.loc
 			if(Con == src.connected) //make sure the atom enters from the approriate lower stairs tile
 				M.Move(target)
+				if(PO == 1) //if pulled objects/mobs will move them also and reset their pulled/pulledby variable
+					if(P)
+						P.loc = C.loc
+						C.start_pulling(P)
+					if(PM)
+						PM.loc = C.loc
+						C.start_pulling(PM)
+				if(GM == 1)
+					grab.affecting.loc = C.loc
+
+
 		return
 
 	proc/find_stair_connection(var/turf/T, var/dir, var/suggested=0)

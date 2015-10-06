@@ -44,34 +44,77 @@
 							soft = 1
 							//dont break here, since we still need to be sure that it isnt blocked
 
+
 					if (soft || (!blocked && !(areacheck.name == "Space")))
-						var/mob/living/carbon/human/H = AM
-						if (H.back && istype(H.back, /obj/item/weapon/tank/jetpack))
-							var/obj/item/weapon/tank/jetpack/J = H.back
+						var/mob/living/carbon/C = null
+						if(iscarbon(AM))
+							C = AM
+						var/obj/P = null//pulled object
+						var/mob/PM = null//pulled mob
+						var/PO = 0 //pulling object?
+						var/obj/item/weapon/grab/grab = null //for grabbed mobs
+						var/GM = 0 // grabed mob check
+						if (C && C.back && istype(C.back, /obj/item/weapon/tank/jetpack))
+							var/obj/item/weapon/tank/jetpack/J = C.back
 							if (J.on == 1)
 								return
+						if(C && C.pulling) //check if they are pulling something
+							if(istype(C.pulling, /obj))
+								P = C.pulling
+								PO = 1
+							if(istype(C.pulling, /mob))
+								PM = C.pulling
+								PO = 1
+						if(C)
+							for(var/obj/item/weapon/W in C.contents)
+								if(istype(W,/obj/item/weapon/grab))
+									GM = 1
+									grab = W
 						AM.Move(floorbelow)
+						if(PO == 1) //pulling something? make sure to move it down and reset the pulled/pulling vars of both
+									//a little hackish but it will work
+							if(P)
+								P.loc = C.loc
+								C.start_pulling(P)
+							if(PM)
+								PM.loc = C.loc
+								C.start_pulling(PM)
+						if(GM == 1)
+							grab.affecting.loc = C.loc
 						if (!soft && istype(AM, /mob/living/carbon/human))
-							var/damage = 5
-							if(H.species.falldmg == 1)
-								damage = 3
-								H.apply_damage((6), BRUTE, "l_leg")
-								H.apply_damage((6), BRUTE, "r_leg")
-							if(H.species.name == "Machine")
-								for(var/datum/organ/external/O in H.organs)
-									if(istype(O ,/datum/organ/external/r_leg)||istype(O,/datum/organ/external/l_leg))
-										O.droplimb(1)
-							else
-								H.apply_damage((10), BRUTE, "l_leg")
-								H.apply_damage((10), BRUTE, "r_leg")
+							dofalldamage(AM)
+						if(!soft && PM) //applies damage to pulling mobs(humans only) that fall down
+							if(istype(PM, /mob/living/carbon/human))
+								dofalldamage(PM)
+						if(!soft && GM) //applies damage to grabbed mobs(humans only) that fall down
+							if(istype(grab.affecting, /mob/living/carbon/human))
+								dofalldamage(grab.affecting)
 
-							H.apply_damage((damage), BRUTE, "head")
-							H.apply_damage((damage), BRUTE, "chest")
-							H.apply_damage((damage), BRUTE, "l_arm")
-							H.apply_damage((damage), BRUTE, "r_arm")
-							H:weakened = max(H:weakened,2)
-							H:updatehealth()
+
 		return ..()
+
+/turf/proc/dofalldamage(var/AM)
+	var/mob/living/carbon/human/H = AM
+	var/damage = 5
+	if(H.species.falldmg == 1)
+		damage = 3
+		H.apply_damage((6), BRUTE, "l_leg")
+		H.apply_damage((6), BRUTE, "r_leg")
+	if(H.species.name == "Machine")
+		for(var/datum/organ/external/O in H.organs)
+			if(istype(O ,/datum/organ/external/r_leg)||istype(O,/datum/organ/external/l_leg))
+				O.droplimb(1)
+	else
+		H.apply_damage((10), BRUTE, "l_leg")
+		H.apply_damage((10), BRUTE, "r_leg")
+
+	H.apply_damage((damage), BRUTE, "head")
+	H.apply_damage((damage), BRUTE, "chest")
+	H.apply_damage((damage), BRUTE, "l_arm")
+	H.apply_damage((damage), BRUTE, "r_arm")
+	H:weakened = max(H:weakened,2)
+	H:updatehealth()
+
 
 /turf/proc/hasbelow()
 	var/turf/controllerlocation = locate(1, 1, z)
