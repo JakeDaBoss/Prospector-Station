@@ -137,7 +137,6 @@
 	primitive = /mob/living/carbon/alien/diona
 	slowdown = 7
 	rarity_value = 3
-	gluttonous = 1
 	hud_type = /datum/hud_data/diona
 	siemens_coefficient = 0.3
 
@@ -229,6 +228,7 @@
 	heat_level_3 = 2000
 
 	synth_temp_gain = 10 //this should cause IPCs to stabilize at ~80 C in a 20 C environment.
+	death_message = "seizes up and powers down, their monitor blank..."
 
 	flags = CAN_JOIN | IS_WHITELISTED | NO_BREATHE | NO_SCAN | NO_BLOOD | NO_PAIN | IS_SYNTHETIC
 
@@ -257,39 +257,14 @@
 	unarmed_types = list(/datum/unarmed_attack/claws, /datum/unarmed_attack/bite/strong)
 	primitive = /mob/living/carbon/monkey/aviskree
 	wingicon = 1
-	sizechange = 1
-	falldmg = 1
-	darksight = 10
-	brute_mod = 1.1
+//	sizechange = 1
+//	falldmg = 1
+//	darksight = 10
+//	brute_mod = 1.1
 
-	flags = CAN_JOIN | IS_WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
+	flags = IS_RESTRICTED | IS_WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	reagent_tag = IS_AVISKREE
-
-/datum/species/avisaran
-	name = "Avisaran"
-	icobase = 'icons/mob/human_races/r_Avisaran.dmi'
-	deform = 'icons/mob/human_races/r_def_Avisaran.dmi'
-	language = "Siik'tajr"
-	tail = "Avisaran"
-	unarmed_types = list(/datum/unarmed_attack/claws_J)
-	darksight = 25
-	dhts = 1
-	wingicon = 1
-	sizechange = 1
-	falldmg = 1
-
-	cold_level_1 = 200 //Default 260
-	cold_level_2 = 140 //Default 200
-	cold_level_3 = 80 //Default 120
-
-	heat_level_1 = 330 //Default 360
-	heat_level_2 = 380 //Default 400
-	heat_level_3 = 800 //Default 1000
-
-	flags = HAS_LIPS | HAS_UNDERWEAR | IS_STRONG | IS_RESTRICTED
-
-	flesh_color = "#BCBCBC"
 
 /datum/species/kidan
 	name = "Kidan"

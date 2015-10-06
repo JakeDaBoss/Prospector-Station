@@ -496,7 +496,7 @@
 		name = "Shaved"
 		icon_state = "bald"
 		gender = NEUTER
-		species_allowed = list("Human", "Unathi","Tajara","Skrell","Vox","Machine","Avisaran","Kidan")
+		species_allowed = list("Human", "Unathi","Tajara","Skrell","Vox","Machine","Kidan")
 
 	watson
 		name = "Watson Mustache"
@@ -668,12 +668,6 @@
 		name = "Tajara Messy"
 		icon_state = "hair_messy"
 		species_allowed = list("Tajara")
-
-	avitaj_ears
-		name = "Avisaran Ears"
-		icon_state = "avisaran_hair_clean"
-		species_allowed = list("Avisaran")
-		do_colouration = 0
 
 	vox_quills_short
 		name = "Short Vox Quills"

@@ -180,29 +180,6 @@
 	flesh_color = "#AFA59E"
 	base_color = "#333333"
 
-/datum/species/avisaran
-	name = "Avisaran"
-	icobase = 'icons/mob/human_races/r_Avisaran.dmi'
-	deform = 'icons/mob/human_races/r_def_Avisaran.dmi'
-	language = "Siik'tajr"
-	tail = "Avisaran"
-	unarmed_type = /datum/unarmed_attack/claws_J
-	darksight = 10
-	dhts = 1
-	wingicon = 1
-
-	cold_level_1 = 200 //Default 260
-	cold_level_2 = 140 //Default 200
-	cold_level_3 = 80 //Default 120
-
-	heat_level_1 = 330 //Default 360
-	heat_level_2 = 380 //Default 400
-	heat_level_3 = 800 //Default 1000
-
-	flags = HAS_LIPS | HAS_UNDERWEAR | HAS_TAIL
-
-	flesh_color = "#BCBCBC"
-
 /datum/species/skrell
 	name = "Skrell"
 	icobase = 'icons/mob/human_races/r_skrell.dmi'
