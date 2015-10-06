@@ -395,26 +395,6 @@
 	siemens_coefficient = 0.6
 	species_restricted = list("exclude","Unathi","Tajara","Skrell","Vox")
 
-//Custom Race Hardsuit
-/obj/item/clothing/head/helmet/space/void/merc/Jamie
-	name = "Jamie's Helmet"
-	desc = "A special helmet that protects against hazardous, low pressure environments. Has radiation shielding. This one doesn't look like it was made for humans, it has the words Jamie scratched on the back."
-	icon_state = "rig0-jamie"
-	item_state = "rig0-jamie"
-	item_color = "jamie" //Determines used sprites: rig[on]-[color] and rig[on]-[color]2 (lying down sprite)
-	icon_action_button = "action_hardhat"
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 80)
-	species_restricted = list("Avisaran")
-
-/obj/item/clothing/suit/space/void/merc/Jamie
-	name = "Jamie's Hardsuit"
-	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding. This one doesn't look like it was made for humans, it has the words Jamie scratched on the back. It has two large slits for wings to be put through."
-	icon_state = "rig-jamie"
-	item_state = "rig-jamie"
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 80)
-	species_restricted = list("Avisaran")
-
-
 //Wizard Rig
 /obj/item/clothing/head/helmet/space/rig/wizard
 	name = "gem-encrusted hardsuit helmet"
