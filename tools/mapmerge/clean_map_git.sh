@@ -1,8 +1,13 @@
 #!/bin/sh
 
-MAPFILE='Mutizphoenix2.dmm'
+set MAPFILE=Mutizphoenix2.dmm
+
+SET z_levels=1
+cd 
 
 git show HEAD:maps/$MAPFILE > tmp.dmm
-java -jar MapPatcher.jar -clean tmp.dmm '../../maps/'$MAPFILE '../../maps/'$MAPFILE
-rm tmp.dmm
+FOR /L %%i IN (1,1,%z_levels%) DO (
+  java -jar MapPatcher.jar -clean ../../maps/%MAPFILE%.backup ../../maps/%MAPFILE% ../../maps/%MAPFILE%
+)
 
+pause
