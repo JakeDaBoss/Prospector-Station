@@ -6,7 +6,7 @@ datum/controller/lighting
 	var/process_cost = 0
 	var/iteration = 0
 
-	var/lighting_states = 7
+	var/lighting_states = 8
 
 	var/list/lights = list()
 	var/lights_workload_max = 0
