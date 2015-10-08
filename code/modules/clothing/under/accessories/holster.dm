@@ -3,11 +3,32 @@
 	desc = "A Gun Holster."
 	icon_state = "holster"
 	item_color = "holster"
-	var/can_hold = list()
-	var/cannot_hold = list()
-	var/storage_slots = 1
 	slot = "utility"
-	var/holster_allow = list()
+	var/holster_allow = /obj/item/weapon/gun
+	var/storage_slots = 1
+	var/can_hold = list("/obj/item/weapon/gun/projectile/colt",
+		"/obj/item/weapon/gun/projectile/sec",
+		"/obj/item/weapon/gun/projectile/silenced",
+		"/obj/item/weapon/gun/projectile/deagle",
+		"/obj/item/weapon/gun/projectile/pistol/flash",
+		"/obj/item/weapon/gun/projectile/revolver",
+		"/obj/item/weapon/gun/projectile/revolver/detective",
+		"/obj/item/weapon/gun/projectile/colt/detective",
+		"/obj/item/weapon/gun/energy/taser",
+		"/obj/item/weapon/gun/energy/stunrevolver",
+		"/obj/item/weapon/gun/energy",
+		"/obj/item/weapon/gun/energy/gun")
+	var/cannot_hold = list("/obj/item/weapon/gun/projectile/shotgun/pump",
+		"/obj/item/weapon/gun/projectile/shotgun/pump/combat",
+		"/obj/item/weapon/gun/projectile/shotgun/doublebarrel",
+		"/obj/item/weapon/gun/projectile/heavysniper",
+		"/obj/item/weapon/gun/projectile/automatic/c20r",
+		"/obj/item/weapon/gun/energy/laser",
+		"/obj/item/weapon/gun/energy/captain",
+		"/obj/item/weapon/gun/energy/lasercannon",
+		"/obj/item/weapon/gun/energy/sniperrifle",
+		"/obj/item/weapon/gun/energy/gun/nuclear",
+		"/obj/item/weapon/gun/energy/pulse_rifle")
 	var/obj/item/weapon/gun/holstered = null
 	action_button_name = "Holster"
 	w_class = 3.0 // so it doesn't fit in pockets
