@@ -2317,6 +2317,17 @@ datum
 				..()
 				return
 
+			on_mob_life(var/mob/living/M as mob, var/alien)
+				if(M.stat == 2.0)
+					return
+					if(!M) M = holder.my_atom
+
+				if(alien && alien == IS_AVISKREE)
+					holder.remove_reagent("capsaicin", 5*REM)
+					holder.add_reagent("water", 5*REM)
+				..()
+				return
+
 		condensedcapsaicin
 			name = "Condensed Capsaicin"
 			id = "condensedcapsaicin"
@@ -2407,6 +2418,17 @@ datum
 				holder.remove_reagent("frostoil", 5)
 				holder.remove_reagent(src.id, FOOD_METABOLISM)
 				data++
+				..()
+				return
+
+			on_mob_life(var/mob/living/M as mob, var/alien)
+				if(M.stat == 2.0)
+					return
+					if(!M) M = holder.my_atom
+
+				if(alien && alien == IS_AVISKREE)
+					holder.remove_reagent("condensedcapsaicin", 5*REM)
+					holder.add_reagent("water", 5*REM)
 				..()
 				return
 
